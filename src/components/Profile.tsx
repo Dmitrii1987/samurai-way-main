@@ -15,11 +15,11 @@ const Profile = () => {
                 <div>
                     New post
                 </div>
-                <div>
-                    <div>
+                <div className='posts'>
+                    <div className='item'>
                         post 1
                     </div>
-                    <div>
+                    <div className='item'>
                         post 2
                     </div>
                 </div>

@@ -1,4 +1,16 @@
-.content {
-    grid-area: c;
-    background-color: aquamarine;
+.dialogues {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialoguesItems {
+    padding: 10px;
+}
+
+.dialoguesItems .active {
+    color: black;
+}
+
+.messages{
+    padding: 10px;
 }

@@ -3,6 +3,12 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
 const MyPosts = () => {
+
+let postData = [
+    {id:1, message:'Hello! How are you?!',counts: 10 },
+    {id:2, message:'This is my first post!', counts: 15}
+]
+
     return (
         <div className={s.postsBlock}>
            <h3>My posts</h3> 

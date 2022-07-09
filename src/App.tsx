@@ -6,29 +6,27 @@ import Navbar from './components/Navbar/Navbar';
 import Dialogues from './components/Dialogues/Dialogues';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-const App = (props:any) => {
+const App = (props: any) => {
 
-    
+
 
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Routes>
-                        <Route path="/messages/*" 
-                        element={<Dialogues state = {props.state.dialoguesPage} />}/>
-                        <Route path="/profile" 
-                        element={<Profile state = {props.state.profilePage}/>}/>
-                        {/* <Route path="/news" element={<News/>}/>
+        <div className='app-wrapper'>
+            <Header />
+            <Navbar />
+            <div className='app-wrapper-content'>
+                <Routes>
+                    <Route path="/messages/*"
+                        element={<Dialogues state={props.state.dialoguesPage} />} />
+                    <Route path="/profile"
+                        element={<Profile state={props.state.profilePage} />} />
+                    {/* <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/> */}
-                    </Routes>
-                </div>
+                </Routes>
             </div>
-        </BrowserRouter>
-        );
+        </div>
+    );
 }
 
 

@@ -17,6 +17,9 @@ let state = {
             { id: 2, message: 'Give me Money!!!' },
             { id: 3, message: 'I Love You' },
         ]
+    },
+    sidebar:{
+        
     }
 }
 

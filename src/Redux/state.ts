@@ -14,6 +14,9 @@ type MessagePropsType={
 }
 type SidebarPropsType={}
 type ProfilePagePropsType= Array<PostPropsType>
+type DialoguesPagePropsType=[DialoguePropsType, MessagePropsType]
+export type StatePropsType=[ProfilePagePropsType,DialoguesPagePropsType,SidebarPropsType]
+
 
 
 let state = {

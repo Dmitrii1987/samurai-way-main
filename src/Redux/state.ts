@@ -1,4 +1,19 @@
 
+type PostPropsType={
+    id:number
+    message:string
+    counts:number
+}
+type DialoguePropsType={
+    id:number
+    name:string
+}
+type MessagePropsType={
+    id:number
+    message:string
+}
+type SidebarPropsType={}
+type ProfilePagePropsType= Array<PostPropsType>
 
 
 let state = {

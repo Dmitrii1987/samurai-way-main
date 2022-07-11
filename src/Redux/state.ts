@@ -1,25 +1,34 @@
 
-type PostPropsType={
+type PostType={
     id:number
     message:string
     counts:number
 }
-type DialoguePropsType={
+type DialogueType={
     id:number
     name:string
 }
-type MessagePropsType={
+type MessageType={
     id:number
     message:string
 }
-type SidebarPropsType={}
-type ProfilePagePropsType= Array<PostPropsType>
-type DialoguesPagePropsType=[DialoguePropsType, MessagePropsType]
-export type StatePropsType=[ProfilePagePropsType,DialoguesPagePropsType,SidebarPropsType]
+type SidebarType={}
+type ProfilePageType={
+    posts:Array<PostType>
+}
+type DialoguesPageType={
+    dialogues: Array<DialogueType>
+    messages: Array<MessageType>
+}
+export type RootStateType={
+    profilePage: ProfilePageType
+    dialoguesPage:DialoguesPageType
+    sidebar: SidebarType
+}
 
 
 
-let state = {
+let state:RootStateType = {
     profilePage: {
         posts : [
             { id: 1, message: 'Hello! How are you?!', counts: 10 },

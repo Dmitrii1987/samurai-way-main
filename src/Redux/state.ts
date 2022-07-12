@@ -38,7 +38,8 @@ let state:RootStateType = {
     profilePage: {
         posts : [
             { id: 1, message: 'Hello! How are you?!', counts: 10 },
-            { id: 2, message: 'This is my first post!', counts: 15 }
+            { id: 2, message: 'This is my first post!', counts: 15 },
+            { id: 3, message: 'This is my second post!', counts: 2 },
         ]
     },
     dialoguesPage: {

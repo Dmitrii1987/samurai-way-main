@@ -12,7 +12,13 @@ type MessageType={
     id:number
     message:string
 }
-type SidebarType={}
+type FriendType={
+    id:number
+    name:string
+}
+type SidebarPageType={
+    friends:Array<FriendType>
+}
 type ProfilePageType={
     posts:Array<PostType>
 }
@@ -23,7 +29,7 @@ type DialoguesPageType={
 export type RootStateType={
     profilePage: ProfilePageType
     dialoguesPage:DialoguesPageType
-    sidebar: SidebarType
+    sidebarPage: SidebarPageType
 }
 
 
@@ -46,10 +52,15 @@ let state:RootStateType = {
             { id: 1, message: 'Hello!' },
             { id: 2, message: 'Give me Money!!!' },
             { id: 3, message: 'I Love You' },
+            { id: 4, message: 'I need You at home' },
         ]
     },
-    sidebar:{
-        
+    sidebarPage: {
+        friends : [
+            { id: 1, name: 'Sasha' },
+            { id: 2, name: 'Andrew' },
+            { id: 3, name: 'Michael' },
+        ]
     }
 }
 

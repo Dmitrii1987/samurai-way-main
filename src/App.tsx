@@ -19,7 +19,7 @@ const App = (props:any) => {
                     <Route path="/messages/*"
                         element={<Dialogues state={state.dialoguesPage} />} />
                     <Route path="/profile"
-                        element={<Profile state={state.profilePage} />} />
+                        element={<Profile state={state.profilePage} addPost={props.addPost} />} />
                     {/* <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/> */}

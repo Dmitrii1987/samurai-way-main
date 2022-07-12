@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { text } from 'stream/consumers'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
@@ -9,9 +10,8 @@ const MyPosts = (props: any) => {
     let newPostElement = useRef<HTMLTextAreaElement>(null)
 
     let addPost = () => {
-        if (newPostElement.current !== null) {
-            alert(newPostElement.current.value)
-        }
+        props.addPost(newPostElement.current?.value)
+        alert(newPostElement.current?.value)
     }
 
 

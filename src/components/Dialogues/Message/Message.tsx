@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import s from './../Dialogues.module.css'
 
 
 
-type MessagePropsType = {
+type MessageType = {
     dialogue: string
 }
 
-const Message = (props: MessagePropsType) => {
+const Message = (props: MessageType) => {
+
+let newMessageElement = useRef<HTMLTextAreaElement>(null)
+const addMessage = ()=> {
+alert(newMessageElement.current?.value)
+}
+
     return (
         <div className={s.dialogue}>
-            {props.dialogue}
+            <textarea ref={newMessageElement}>
+                {props.dialogue}
+            </textarea>
+            <button onClick={addMessage}>send</button>
         </div>
     )
 }

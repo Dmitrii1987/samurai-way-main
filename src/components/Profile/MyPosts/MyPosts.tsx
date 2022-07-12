@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
-const MyPosts = (props:any) => {
+const MyPosts = (props: any) => {
 
+    let postsElements = props.posts.map((p: { message: string; counts: number }) => <Post message={p.message} counts={p.counts} />)
 
+    let newPostElement = useRef<HTMLTextAreaElement>(null)
 
-let postsElements = props.posts.map((p: { message: string; counts: number })=> <Post message={p.message} counts={p.counts} />)
+    let addPost = () => {
+        if (newPostElement.current !== null) {
+            alert(newPostElement.current.value)
+        }
+    }
+
 
     return (
         <div className={s.postsBlock}>
-           <h3>My posts</h3> 
+            <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostElement}></textarea>
                 </div>
 
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost} >Add post</button>
                     <button>Delete</button>
                 </div>
             </div>

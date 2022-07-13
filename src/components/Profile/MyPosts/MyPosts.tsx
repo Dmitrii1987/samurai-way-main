@@ -10,10 +10,12 @@ const MyPosts = (props: any) => {
     let newPostElement = useRef<HTMLTextAreaElement>(null)
 
     let addPost = () => {
-        props.addPost(newPostElement.current?.value)
-        alert(newPostElement.current?.value)
-    }
+       let text=newPostElement.current?.value
+       props.addPost(text)
+       
+        //alert(text)
 
+    }
 
     return (
         <div className={s.postsBlock}>

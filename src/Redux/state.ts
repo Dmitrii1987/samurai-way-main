@@ -41,7 +41,7 @@ let state:RootStateType = {
             { id: 2, message: 'This is my first post!', counts: 15 },
             { id: 3, message: 'This is my second post!', counts: 2 },
         ],
-        newPostText: 'CCA'
+        newPostText: ''
     },
     dialoguesPage: {
         dialogues : [
@@ -73,7 +73,8 @@ export let addPost = ()=> {
         message:state.profilePage.newPostText , 
         counts: 0
     }
-    state.profilePage.posts.push(newPost)
+    if (state.profilePage.newPostText !== '') {
+    state.profilePage.posts.push(newPost)}
     state.profilePage.newPostText=''
     rerenderEntireTree(state)
 }

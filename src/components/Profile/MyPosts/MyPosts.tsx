@@ -10,11 +10,15 @@ const MyPosts = (props: any) => {
     let newPostElement = useRef<HTMLTextAreaElement>(null)
 
     let addPost = () => {
-       let text=newPostElement.current?.value
-       props.addPost(text)
-       
+        props.addPost()
+        //props.updateNewPostText('')   //зануляет поле вводе посла отправки поста
         //alert(text)
+    }
 
+    let onPostChange = () => {
+        let text = newPostElement.current?.value
+        props.updateNewPostText(text)
+        console.log(text);
     }
 
     return (
@@ -22,7 +26,7 @@ const MyPosts = (props: any) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
                 </div>
 
                 <div>

@@ -22,6 +22,7 @@ type SidebarPageType={
 }
 type ProfilePageType={
     posts:Array<PostType>
+    newPostText:any
 }
 type DialoguesPageType={
     dialogues: Array<DialogueType>
@@ -33,15 +34,14 @@ export type RootStateType={
     sidebarPage: SidebarPageType
 }
 
-
-
 let state:RootStateType = {
     profilePage: {
         posts : [
             { id: 1, message: 'Hello! How are you?!', counts: 10 },
             { id: 2, message: 'This is my first post!', counts: 15 },
             { id: 3, message: 'This is my second post!', counts: 2 },
-        ]
+        ],
+        newPostText: 'CCA'
     },
     dialoguesPage: {
         dialogues : [
@@ -67,13 +67,19 @@ let state:RootStateType = {
 }
 
 
-export let addPost = (postMessage:string)=> {
+export let addPost = ()=> {
     let newPost = {
         id: 5, 
-        message:postMessage , 
+        message:state.profilePage.newPostText , 
         counts: 0
     }
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText=''
+    rerenderEntireTree(state)
+}
+
+export let updateNewPostText=(newText:any)=>{
+    state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { ChangeEvent, } from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
@@ -16,7 +16,7 @@ const MyPosts = (props: any) => {
         //alert(text)
     }
 
-    let onPostChange = () => {
+    let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         let text = newPostElement.current?.value
         props.updateNewPostText(text)
        // console.log(text);

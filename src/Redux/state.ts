@@ -78,7 +78,7 @@ export let addPost = ()=> {
     rerenderEntireTree(state)
 }
 
-export let updateNewPostText=(newText:any)=>{
+export let updateNewPostText=(newText:string)=>{
     state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }

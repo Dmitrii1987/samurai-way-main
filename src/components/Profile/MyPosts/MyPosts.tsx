@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import { text } from 'stream/consumers'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
@@ -7,7 +6,9 @@ const MyPosts = (props: any) => {
 
     let postsElements = props.posts.map((p: { message: string; counts: number }) => <Post message={p.message} counts={p.counts} />)
 
-    let newPostElement = useRef<HTMLTextAreaElement>(null)
+
+    let newPostElement= React.createRef<HTMLTextAreaElement>()
+    //let newPostElement = useRef<HTMLTextAreaElement>(null)
 
     let addPost = () => {
         props.addPost()

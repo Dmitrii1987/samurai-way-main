@@ -3,13 +3,22 @@
 // import './index.css';
 // import App from './App';
 // import { BrowserRouter } from 'react-router-dom';
-import state, { addPost } from './Redux/state';
-import { rerenderEntireTree } from './render';
+import ReactDOM from "react-dom"
+import { BrowserRouter } from "react-router-dom"
+import App from "./App"
+import state, { addPost, RootStateType, subscribe, updateNewPostText } from "./Redux/state"
 
+let rerenderEntireTree = (state:RootStateType)=> {
+    ReactDOM.render(
+        <BrowserRouter >
+            <App state={state} addPost={addPost} updateNewPostText={updateNewPostText} />
+        </BrowserRouter>, document.getElementById('root'));
+    
+}
 
+rerenderEntireTree(state);
 
-
-rerenderEntireTree(state)
+subscribe(rerenderEntireTree);
 
 // ReactDOM.render(
 //   <React.StrictMode>

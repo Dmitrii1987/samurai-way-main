@@ -1,4 +1,4 @@
-import React, { ChangeEvent,  useRef } from 'react'
+import React, { ChangeEvent } from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
@@ -12,10 +12,11 @@ const MyPosts = (props: any) => {
 
     let addPost = () => {
         props.addPost()
-        //props.updateNewPostText('')   //зануляет поле вводе посла отправки поста
+        //props.updateNewPostText('')
         //alert(text)
     }
 
+   
     let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         let text = newPostElement.current?.value
         props.updateNewPostText(text)

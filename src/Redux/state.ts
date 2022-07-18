@@ -1,43 +1,43 @@
-//import { rerenderEntireTree } from ".."
+//import { _callSubscriber } from ".."
 
-type PostType={
-    id:number
-    message:string
-    counts:number
+type PostType = {
+    id: number
+    message: string
+    counts: number
 }
-type DialogueType={
-    id:number
-    name:string
+type DialogueType = {
+    id: number
+    name: string
 }
-type MessageType={
-    id:number
-    message:string
+type MessageType = {
+    id: number
+    message: string
 }
-type FriendType={
-    id:number
-    name:string
+type FriendType = {
+    id: number
+    name: string
 }
-type SidebarPageType={
-    friends:Array<FriendType>
+type SidebarPageType = {
+    friends: Array<FriendType>
 }
-type ProfilePageType={
-    posts:Array<PostType>
-    newPostText:any
+type ProfilePageType = {
+    posts: Array<PostType>
+    newPostText: any
 }
-type DialoguesPageType={
+type DialoguesPageType = {
     dialogues: Array<DialogueType>
     messages: Array<MessageType>
 }
-export type RootStateType={
+export type RootStateType = {
     profilePage: ProfilePageType
-    dialoguesPage:DialoguesPageType
+    dialoguesPage: DialoguesPageType
     sidebarPage: SidebarPageType
 }
 
 let store = {
-    _state:{
+    _state: {
         profilePage: {
-            posts : [
+            posts: [
                 { id: 1, message: 'Hello! How are you?!', counts: 10 },
                 { id: 2, message: 'This is my first post!', counts: 15 },
                 { id: 3, message: 'This is my second post!', counts: 2 },
@@ -45,13 +45,13 @@ let store = {
             newPostText: ''
         },
         dialoguesPage: {
-            dialogues : [
+            dialogues: [
                 { id: 1, name: 'Dima' },
                 { id: 2, name: 'Vika' },
                 { id: 3, name: 'Misha' },
                 { id: 4, name: 'Sasha' }
             ],
-            messages : [
+            messages: [
                 { id: 1, message: 'Hello!' },
                 { id: 2, message: 'Give me Money!!!' },
                 { id: 3, message: 'I Love You' },
@@ -59,33 +59,37 @@ let store = {
             ]
         },
         sidebarPage: {
-            friends : [
+            friends: [
                 { id: 1, name: 'Sasha' },
                 { id: 2, name: 'Andrew' },
                 { id: 3, name: 'Michael' },
             ]
         }
     },
-    rerenderEntireTree(state:RootStateType) {
+    getState() {
+        return this._state
+    },
+    _callSubscriber(state: RootStateType) {
         console.log('state has been changed');
     },
     addPost() {
         let newPost = {
-            id: 5, 
-            message:state.profilePage.newPostText , 
+            id: 5,
+            message: this._state.profilePage.newPostText,
             counts: 0
         }
-        if (state.profilePage.newPostText !== '') {
-        state.profilePage.posts.push(newPost)}
-        state.profilePage.newPostText=''
-        rerenderEntireTree(state)
+        if (this._state.profilePage.newPostText !== '') {
+            this._state.profilePage.posts.push(newPost)
+        }
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber(this._state)
     },
-    updateNewPostText(newText:string) {
-        state.profilePage.newPostText = newText
-        rerenderEntireTree(state)
+    updateNewPostText(newText: string) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber(this._state)
     },
-     subscribe (observer:any) {
-        rerenderEntireTree = observer
+    subscribe(observer: any) {
+        this._callSubscriber = observer
     }
 }
 
@@ -123,29 +127,29 @@ export default store
 //     }
 // }
 
-// let rerenderEntireTree = (state:RootStateType)=> {
+// let _callSubscriber = (state:RootStateType)=> {
 //     console.log('state has been changed');
 // }
 
 
 // export let addPost = ()=> {
 //     let newPost = {
-//         id: 5, 
-//         message:state.profilePage.newPostText , 
+//         id: 5,
+//         message:state.profilePage.newPostText ,
 //         counts: 0
 //     }
 //     if (state.profilePage.newPostText !== '') {
 //     state.profilePage.posts.push(newPost)}
 //     state.profilePage.newPostText=''
-//     rerenderEntireTree(state)
+//     _callSubscriber(state)
 // }
 
 // export let updateNewPostText=(newText:string)=>{
 //     state.profilePage.newPostText = newText
-//     rerenderEntireTree(state)
+//     _callSubscriber(state)
 // }
 
 // export const subscribe = (observer:any) => {
-//     rerenderEntireTree = observer
+//     _callSubscriber = observer
 // }
 

@@ -13,14 +13,15 @@ const MyPosts = (props: any) => {
     let addPost = () => {
         props.addPost()
         //props.updateNewPostText('')
-        //alert(text)
+        //alert(123)
     }
 
    
     let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        
         let text = newPostElement.current?.value
         props.updateNewPostText(text)
-       // console.log(text);
+        console.log(text);
     }
 
     return (

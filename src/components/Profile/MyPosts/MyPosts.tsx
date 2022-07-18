@@ -11,16 +11,15 @@ const MyPosts = (props: any) => {
     //let newPostElement = useRef<HTMLTextAreaElement>(null)
 
     let addPost = () => {
-        props.addPost()
+        props.dispatch({type: 'ADD-POST'})
         //props.updateNewPostText('')
         //alert(123)
     }
 
-   
     let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         
         let text = newPostElement.current?.value
-        props.updateNewPostText(text)
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
         console.log(text);
     }
 

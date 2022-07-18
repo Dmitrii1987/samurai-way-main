@@ -34,64 +34,118 @@ export type RootStateType={
     sidebarPage: SidebarPageType
 }
 
-let state:RootStateType = {
-    profilePage: {
-        posts : [
-            { id: 1, message: 'Hello! How are you?!', counts: 10 },
-            { id: 2, message: 'This is my first post!', counts: 15 },
-            { id: 3, message: 'This is my second post!', counts: 2 },
-        ],
-        newPostText: ''
+let store = {
+    _state:{
+        profilePage: {
+            posts : [
+                { id: 1, message: 'Hello! How are you?!', counts: 10 },
+                { id: 2, message: 'This is my first post!', counts: 15 },
+                { id: 3, message: 'This is my second post!', counts: 2 },
+            ],
+            newPostText: ''
+        },
+        dialoguesPage: {
+            dialogues : [
+                { id: 1, name: 'Dima' },
+                { id: 2, name: 'Vika' },
+                { id: 3, name: 'Misha' },
+                { id: 4, name: 'Sasha' }
+            ],
+            messages : [
+                { id: 1, message: 'Hello!' },
+                { id: 2, message: 'Give me Money!!!' },
+                { id: 3, message: 'I Love You' },
+                { id: 4, message: 'I need You at home' },
+            ]
+        },
+        sidebarPage: {
+            friends : [
+                { id: 1, name: 'Sasha' },
+                { id: 2, name: 'Andrew' },
+                { id: 3, name: 'Michael' },
+            ]
+        }
     },
-    dialoguesPage: {
-        dialogues : [
-            { id: 1, name: 'Dima' },
-            { id: 2, name: 'Vika' },
-            { id: 3, name: 'Misha' },
-            { id: 4, name: 'Sasha' }
-        ],
-        messages : [
-            { id: 1, message: 'Hello!' },
-            { id: 2, message: 'Give me Money!!!' },
-            { id: 3, message: 'I Love You' },
-            { id: 4, message: 'I need You at home' },
-        ]
+    rerenderEntireTree(state:RootStateType) {
+        console.log('state has been changed');
     },
-    sidebarPage: {
-        friends : [
-            { id: 1, name: 'Sasha' },
-            { id: 2, name: 'Andrew' },
-            { id: 3, name: 'Michael' },
-        ]
+    addPost() {
+        let newPost = {
+            id: 5, 
+            message:state.profilePage.newPostText , 
+            counts: 0
+        }
+        if (state.profilePage.newPostText !== '') {
+        state.profilePage.posts.push(newPost)}
+        state.profilePage.newPostText=''
+        rerenderEntireTree(state)
+    },
+    updateNewPostText(newText:string) {
+        state.profilePage.newPostText = newText
+        rerenderEntireTree(state)
+    },
+     subscribe (observer:any) {
+        rerenderEntireTree = observer
     }
 }
 
-let rerenderEntireTree = (state:RootStateType)=> {
-    console.log('state has been changed');
-    
-}
+export default store
+
+// let state:RootStateType = {
+//     profilePage: {
+//         posts : [
+//             { id: 1, message: 'Hello! How are you?!', counts: 10 },
+//             { id: 2, message: 'This is my first post!', counts: 15 },
+//             { id: 3, message: 'This is my second post!', counts: 2 },
+//         ],
+//         newPostText: ''
+//     },
+//     dialoguesPage: {
+//         dialogues : [
+//             { id: 1, name: 'Dima' },
+//             { id: 2, name: 'Vika' },
+//             { id: 3, name: 'Misha' },
+//             { id: 4, name: 'Sasha' }
+//         ],
+//         messages : [
+//             { id: 1, message: 'Hello!' },
+//             { id: 2, message: 'Give me Money!!!' },
+//             { id: 3, message: 'I Love You' },
+//             { id: 4, message: 'I need You at home' },
+//         ]
+//     },
+//     sidebarPage: {
+//         friends : [
+//             { id: 1, name: 'Sasha' },
+//             { id: 2, name: 'Andrew' },
+//             { id: 3, name: 'Michael' },
+//         ]
+//     }
+// }
+
+// let rerenderEntireTree = (state:RootStateType)=> {
+//     console.log('state has been changed');
+// }
 
 
-export let addPost = ()=> {
-    let newPost = {
-        id: 5, 
-        message:state.profilePage.newPostText , 
-        counts: 0
-    }
-    if (state.profilePage.newPostText !== '') {
-    state.profilePage.posts.push(newPost)}
-    state.profilePage.newPostText=''
-    rerenderEntireTree(state)
-}
+// export let addPost = ()=> {
+//     let newPost = {
+//         id: 5, 
+//         message:state.profilePage.newPostText , 
+//         counts: 0
+//     }
+//     if (state.profilePage.newPostText !== '') {
+//     state.profilePage.posts.push(newPost)}
+//     state.profilePage.newPostText=''
+//     rerenderEntireTree(state)
+// }
 
-export let updateNewPostText=(newText:string)=>{
-    state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
-}
+// export let updateNewPostText=(newText:string)=>{
+//     state.profilePage.newPostText = newText
+//     rerenderEntireTree(state)
+// }
 
-export const subscribe = (observer:any) => {
-    rerenderEntireTree = observer
-    
-}
+// export const subscribe = (observer:any) => {
+//     rerenderEntireTree = observer
+// }
 
-export default state

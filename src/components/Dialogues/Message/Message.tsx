@@ -9,10 +9,10 @@ type MessageType = {
 
 const Message = (props: MessageType) => {
 
-let newMessageElement = useRef<HTMLTextAreaElement>(null)
-const addMessage = ()=> {
-alert(newMessageElement.current?.value)
-}
+    let newMessageElement = useRef<HTMLTextAreaElement>(null)
+    const addMessage = () => {
+        alert(newMessageElement.current?.value)
+    }
 
     return (
         <div className={s.dialogue}>

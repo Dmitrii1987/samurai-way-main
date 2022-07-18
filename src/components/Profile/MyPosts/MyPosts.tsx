@@ -1,6 +1,19 @@
 import React, { ChangeEvent } from 'react'
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../Redux/state'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
+
+// let addPostActionCreator = () => {
+//     return {
+//         type: 'ADD-POST'
+//     }
+// }
+// let updateNewPostActionCreator = (text:string | undefined) => {
+//     return {
+//         type: 'UPDATE-NEW-POST-TEXT',
+//         newText: text
+//     }
+// }
 
 const MyPosts = (props: any) => {
 
@@ -11,16 +24,18 @@ const MyPosts = (props: any) => {
     //let newPostElement = useRef<HTMLTextAreaElement>(null)
 
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST'})
+        props.dispatch(addPostActionCreator())
         //props.updateNewPostText('')
         //alert(123)
     }
 
     let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
-        
         let text = newPostElement.current?.value
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
-        console.log(text);
+        //let action= {type: 'UPDATE-NEW-POST-TEXT', newText: text}
+        let action = updateNewPostActionCreator(text)
+        //props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+       // console.log(text);
+       props.dispatch(action)
     }
 
     return (

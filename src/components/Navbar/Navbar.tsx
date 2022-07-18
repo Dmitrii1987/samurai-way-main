@@ -32,11 +32,21 @@ const Navbar = () => {
                 <NavLink to={"/settings"} className={props => props.isActive ? `${s.item} ${s.activeLink}` : s.item} >
                     Settings
                 </NavLink>
-                {<h3>Friends</h3>}
+               
+            </div>
+            <div className={s.item}>
+                <NavLink to={"/friends"} className={props => props.isActive ? `${s.item} ${s.activeLink}` : s.item} >
+                    Friends
+                </NavLink>
                 <Friends name={'Sasha'} id={1} />
                 <Friends name={'Andrew'} id={2} />
                 <Friends name={'Michael'} id={3} />
             </div>
+
+            {/* {<h3>Friends</h3>}
+                <Friends name={'Sasha'} id={1} />
+                <Friends name={'Andrew'} id={2} />
+                <Friends name={'Michael'} id={3} /> */}
         </nav>
     )
 }

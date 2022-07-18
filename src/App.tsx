@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import state, { RootStateType } from './Redux/state';
 import Friends from './components/Navbar/Friends';
 
-const App = (props:any) => {
+const App = (props: any) => {
 
     return (
         <div className='app-wrapper'>
@@ -19,14 +19,15 @@ const App = (props:any) => {
                     <Route path="/messages/*"
                         element={<Dialogues state={props.state.dialoguesPage} />} />
                     <Route path="/profile"
-                        element={<Profile 
-                        profilePage={props.state.profilePage} 
-                        dispatch={props.dispatch}
+                        element={<Profile
+                            profilePage={props.state.profilePage}
+                            dispatch={props.dispatch}
                         // updateNewPostText={props.updateNewPostText} 
                         />} />
-                    {/* <Route path="/news" element={<News/>}/>
-                        <Route path="/music" element={<Music/>}/>
-                        <Route path="/settings" element={<Settings/>}/> */}
+                    {/* <Route path="/news" element={<News />} />
+                    <Route path="/music" element={<Music />} />
+                    <Route path="/settings" element={<Settings />} />
+                    <Route path="/friends" element={<Friends name={props.name} id={0} />} /> */}
                 </Routes>
             </div>
         </div>

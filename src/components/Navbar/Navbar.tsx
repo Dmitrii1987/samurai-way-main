@@ -5,10 +5,10 @@ import s from './Navbar.module.css'
 
 
 const Navbar = () => {
-    
+
     return (
         <nav className={s.nav}>
-            <div>
+            <div className={s.item}>
                 <NavLink to={"/profile"} className={props => props.isActive ? `${s.item} ${s.activeLink}` : s.item} >
                     Profile
                 </NavLink>
@@ -32,7 +32,7 @@ const Navbar = () => {
                 <NavLink to={"/settings"} className={props => props.isActive ? `${s.item} ${s.activeLink}` : s.item} >
                     Settings
                 </NavLink>
-               
+
             </div>
             <div className={s.item}>
                 <NavLink to={"/friends"} className={props => props.isActive ? `${s.item} ${s.activeLink}` : s.item} >

@@ -1,10 +1,5 @@
 //import { rerenderEntireTree } from ".."
 
-let rerenderEntireTree = (state:RootStateType)=> {
-    console.log('state has been changed');
-    
-}
-
 type PostType={
     id:number
     message:string
@@ -69,6 +64,11 @@ let state:RootStateType = {
             { id: 3, name: 'Michael' },
         ]
     }
+}
+
+let rerenderEntireTree = (state:RootStateType)=> {
+    console.log('state has been changed');
+    
 }
 
 

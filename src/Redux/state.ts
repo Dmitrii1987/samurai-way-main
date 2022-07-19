@@ -36,6 +36,7 @@ export type RootStateType = {
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 
 let store = {
     _state: {
@@ -59,7 +60,8 @@ let store = {
                 { id: 2, message: 'Give me Money!!!' },
                 { id: 3, message: 'I Love You' },
                 { id: 4, message: 'I need You at home' },
-            ]
+            ],
+            newMessageBody: ""
         },
         sidebarPage: {
             friends: [
@@ -110,7 +112,9 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this._state)
-
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialoguesPage.newMessageBody = action.body
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../Redux/state';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../Redux/dialogues-reducer';
+
 import DialogueItem from './DialogueItem/DialogueItem';
 import s from './Dialogues.module.css'
 import Message from './Message/Message';

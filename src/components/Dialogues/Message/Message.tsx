@@ -16,10 +16,10 @@ const Message = (props: MessageType) => {
 
     return (
         <div className={s.dialogue}>
-            <textarea ref={newMessageElement}>
+            {/* <textarea ref={newMessageElement}> */}
                 {props.dialogue}
-            </textarea>
-            <button onClick={addMessage}>send</button>
+            {/* </textarea> */}
+             {/* <button onClick={addMessage}>send</button> */}
         </div>
     )
 }

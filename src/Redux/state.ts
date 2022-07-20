@@ -37,6 +37,7 @@ export type RootStateType = {
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 
 let store = {
     _state: {
@@ -114,7 +115,12 @@ let store = {
             this._callSubscriber(this._state)
         } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
             this._state.dialoguesPage.newMessageBody = action.body
-            
+            this._callSubscriber(this._state)
+        } else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialoguesPage.newMessageBody
+            this._state.dialoguesPage.newMessageBody = ''
+            this._state.dialoguesPage.messages.push({id:6, message: body})
+            this._callSubscriber(this._state)
         }
     }
 }
@@ -130,6 +136,10 @@ export const updateNewPostActionCreator = (text:string | undefined) => {
         newText: text
     }
 }
+//эти записи похожи. Сверху есть return, а синзу нету
+export const sendMessageCreator = ({type:SEND_MESSAGE})
+export const updateNewMessageBodyCreator = (body:string) =>
+({type: UPDATE_NEW_MESSAGE_BODY,body:body})
 
 export default store
 

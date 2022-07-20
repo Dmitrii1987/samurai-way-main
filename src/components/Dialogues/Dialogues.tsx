@@ -18,7 +18,7 @@ const Dialogues = (props: any) => {
     let onSendMessageClick = () => {
         props.store.dispatch(sendMessageCreator)
     }
-    let onNewMessageClick = (e:ChangeEvent<HTMLTextAreaElement>) => {
+    let onNewMessageClick = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.target.value
         props.store.dispatch(updateNewMessageBodyCreator(body))
     }
@@ -31,8 +31,16 @@ const Dialogues = (props: any) => {
             <div className={s.messages}>
                 <div>{messagesElements}</div>
                 <div>
-                    <div><textarea onChange={onNewMessageClick} value={newMessageBody} placeholder='Enter your message' /></div>
-                    <div><button onClick={onSendMessageClick} >Send</button></div>
+                    <div>
+                        <textarea onChange={onNewMessageClick}
+                            value={newMessageBody}
+                            placeholder='Enter your message' />
+                    </div>
+                    <div>
+                        <button onClick={onSendMessageClick}>
+                            Send
+                        </button>
+                    </div>
                 </div>
             </div>
 

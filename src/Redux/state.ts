@@ -40,8 +40,17 @@ export type RootStateType = {
     sidebarPage: SidebarPageType
 }
 
+export type StoreType = {
+    _state: RootStateType
+    _callSubscriber:any
+    getState:()=>RootStateType
+    dispatch:(action:any) => void
+    subscribe:(callback:()=>void) => void
 
-let store = {
+}
+
+
+let store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -64,7 +73,7 @@ let store = {
                 { id: 3, message: 'I Love You' },
                 { id: 4, message: 'I need You at home' },
             ],
-            newMessageBody: ""
+            //newMessageBody: ""  //  нужно раскомментировать
         },
         sidebarPage: {
             friends: [
@@ -101,13 +110,13 @@ let store = {
     //     this._callSubscriber(this._state)
     // },
     dispatch(action: any) {     // action -это объект, который описывает какое д-е совершить,он имеет type
-        
-       this._state.profilePage = profileReducer(this._state.profilePage, action)
-       this._state.dialoguesPage = dialoguesReducer(this._state.dialoguesPage, action)
-       this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action)
 
-       this._callSubscriber(this._state)
-        
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialoguesPage = dialoguesReducer(this._state.dialoguesPage, action)
+        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action)
+
+        this._callSubscriber(this._state)
+
     }
 }
 

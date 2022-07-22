@@ -33,10 +33,9 @@ const MyPosts = (props: any) => {
     let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         let text = newPostElement.current?.value
         //let action= {type: 'UPDATE-NEW-POST-TEXT', newText: text}
-        let action = updateNewPostActionCreator(text)
         //props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
        // console.log(text);
-       props.dispatch(action)
+       props.dispatch(updateNewPostActionCreator(text))
     }
 
     return (

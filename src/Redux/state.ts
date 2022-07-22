@@ -1,7 +1,7 @@
 //import { _callSubscriber } from ".."
 
 import dialoguesReducer from "./dialogues-reducer"
-import profileReducer from "./profile-reducer"
+import profileReducer, { ActionsTypes } from "./profile-reducer"
 import sidebarReducer from "./sidebar-reducer"
 
 
@@ -28,11 +28,12 @@ type SidebarPageType = {
 }
 type ProfilePageType = {
     posts: Array<PostType>
-    newPostText: any
+    newPostText: string
 }
 type DialoguesPageType = {
     dialogues: Array<DialogueType>
     messages: Array<MessageType>
+    newMessageBody:string
 }
 export type RootStateType = {
     profilePage: ProfilePageType
@@ -44,7 +45,7 @@ export type StoreType = {
     _state: RootStateType
     _callSubscriber:any
     getState:()=>RootStateType
-    dispatch:(action:any) => void
+    dispatch:(action:ActionsTypes) => void
     subscribe:(callback:()=>void) => void
 
 }
@@ -73,7 +74,7 @@ let store: StoreType = {
                 { id: 3, message: 'I Love You' },
                 { id: 4, message: 'I need You at home' },
             ],
-            //newMessageBody: ""  //  нужно раскомментировать
+            newMessageBody: ""  
         },
         sidebarPage: {
             friends: [
@@ -109,7 +110,7 @@ let store: StoreType = {
     //     this._state.profilePage.newPostText = newText
     //     this._callSubscriber(this._state)
     // },
-    dispatch(action: any) {     // action -это объект, который описывает какое д-е совершить,он имеет type
+    dispatch(action) {     // action -это объект, который описывает какое д-е совершить,он имеет type
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialoguesPage = dialoguesReducer(this._state.dialoguesPage, action)

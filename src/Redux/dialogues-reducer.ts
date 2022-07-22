@@ -18,8 +18,11 @@ const dialoguesReducer = (state: any, action: any) => {
 
 }
 
+export type ActionsTypes = ReturnType<typeof sendMessageCreator> | ReturnType<typeof updateNewMessageBodyCreator>
 
-export const sendMessageCreator = ({ type: SEND_MESSAGE })
+export const sendMessageCreator = () =>{
+    return {type: SEND_MESSAGE} 
+} 
 
 export const updateNewMessageBodyCreator = (body: string) =>
     ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })

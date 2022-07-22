@@ -10,7 +10,9 @@ const profileReducer = (state: any, action: any) => {
                 message: state.newPostText,
                 counts: 0
             }
-            state.posts.push(newPost)
+            if(state.newPostText !== "") {
+                state.posts.push(newPost)
+            }
             state.newPostText = '';
             return state
         case UPDATE_NEW_POST_TEXT:

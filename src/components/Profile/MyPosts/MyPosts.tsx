@@ -29,6 +29,7 @@ const MyPosts = (props: any) => {
         //props.updateNewPostText('')
         //alert(123)
     }
+    
 
     let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
         let text = newPostElement.current?.value

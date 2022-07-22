@@ -28,7 +28,7 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     } as const
 }
-export const updateNewPostActionCreator = (text:string) => {
+export const updateNewPostActionCreator = (text:string | undefined) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: text

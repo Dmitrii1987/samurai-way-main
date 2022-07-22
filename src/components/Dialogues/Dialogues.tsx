@@ -17,11 +17,12 @@ const Dialogues = (props: any) => {
     let newMessageBody = state.newMessageBody
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator)
+        props.store.dispatch(sendMessageCreator())
     }
     let onNewMessageClick = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.target.value
         props.store.dispatch(updateNewMessageBodyCreator(body))
+       
     }
 
     return (

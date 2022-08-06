@@ -5,7 +5,7 @@ import Profile from './components/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
 import Dialogues from './components/Dialogues/Dialogues';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import state, { RootStateType } from './Redux/state';
+import state, { RootStateType } from './Redux/store';
 import Friends from './components/Navbar/Friends';
 
 const App = (props: any) => {

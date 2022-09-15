@@ -10,7 +10,7 @@ let initialState = {
     newPostText: ''
 }
 
-const profileReducer = (state=initialState, action: ActionsTypes) => {
+const profileReducer = (state=initialState, action: any) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -38,7 +38,7 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     } as const
 }
-export const updateNewPostActionCreator = (text:string) => {
+export const updateNewPostActionCreator = (text:string | undefined) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: text
